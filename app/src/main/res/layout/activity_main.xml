@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="chiaradecaria.agenda.MainActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Titolo"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txtViewTitolo" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Luogo"
+        android:ems="10"
+        android:id="@+id/txtViewLuogo"
+        android:layout_below="@+id/txtViewTitolo"
+        android:layout_alignLeft="@+id/txtViewTitolo"
+        android:layout_alignStart="@+id/txtViewTitolo" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/txtData"
+        android:layout_below="@+id/txtViewLuogo"
+        android:layout_alignLeft="@+id/txtViewLuogo"
+        android:layout_alignStart="@+id/txtViewLuogo"
+        android:text="data" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/txtOraInizio"
+        android:text="Ora inizio"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/txtViewLuogo"
+        android:layout_alignLeft="@+id/txtData"
+        android:layout_alignStart="@+id/txtData" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/txtOraFine"
+        android:text="Ora fine"
+        android:layout_below="@+id/txtOraInizio"
+        android:layout_alignLeft="@+id/txtOraInizio"
+        android:layout_alignStart="@+id/txtOraInizio" />
+
+    <Button
+        android:text="Salva"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btnSalva"
+        android:onClick="btnSalvaOnClick"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btnSalva"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/listViewEventi" />
+
+</RelativeLayout>
