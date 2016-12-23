@@ -10,76 +10,31 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="chiaradecaria.agenda.MainActivity">
 
-    <EditText
+    <CalendarView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Titolo"
-        android:ems="10"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/txtViewTitolo" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/calendarView" />
 
-    <EditText
+    <TextView
+        android:text="Eventi di oggi:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Luogo"
-        android:ems="10"
-        android:id="@+id/txtViewLuogo"
-        android:layout_below="@+id/txtViewTitolo"
-        android:layout_alignLeft="@+id/txtViewTitolo"
-        android:layout_alignStart="@+id/txtViewTitolo" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/txtData"
-        android:layout_below="@+id/txtViewLuogo"
-        android:layout_alignLeft="@+id/txtViewLuogo"
-        android:layout_alignStart="@+id/txtViewLuogo"
-        android:text="data" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:id="@+id/txtOraInizio"
-        android:text="Ora inizio"
-        android:layout_marginTop="42dp"
-        android:layout_below="@+id/txtViewLuogo"
-        android:layout_alignLeft="@+id/txtData"
-        android:layout_alignStart="@+id/txtData" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:id="@+id/txtOraFine"
-        android:text="Ora fine"
-        android:layout_below="@+id/txtOraInizio"
-        android:layout_alignLeft="@+id/txtOraInizio"
-        android:layout_alignStart="@+id/txtOraInizio" />
-
-    <Button
-        android:text="Salva"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/btnSalva"
-        android:onClick="btnSalvaOnClick"/>
+        android:layout_below="@+id/calendarView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/txtViewEventi"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/btnSalva"
+        android:layout_below="@+id/txtViewEventi"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/listViewEventi" />
-
+        android:id="@+id/listViewEventiOggi"
+        android:layout_marginTop="5dp" />
 </RelativeLayout>

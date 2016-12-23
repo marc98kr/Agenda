@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="0640130d906226d6a8876ce7328ae5c8dbd34bf1">
+        sha1="2630c95cd546852cef895f809f756c7dddd2c951">
         <dex dex="C:\Users\Marco\Desktop\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_7ea0ff0329baa27538bde24c651663dedfb21135\classes.dex" />
     </item>
     <item
@@ -70,7 +70,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="a739858276514c3aa33b3ac3746cf002dbd7971d">
+        sha1="1912afd9782a0dc4c796076e036c3fdff19beb94">
         <dex dex="C:\Users\Marco\Desktop\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_f8b6381d444ad857086a9810e16d6d8a95e979d6\classes.dex" />
     </item>
     <item
