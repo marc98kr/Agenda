@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_visualizza_evento"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="chiaradecaria.agenda.ActivityVisualizzaEvento">
+
+    <TextView
+        android:text="Titolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txtViewTitolo"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:layout_below="@+id/txtViewTitolo"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txtTitolo"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="Luogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTitolo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:id="@+id/txtViewLuogo"
+        android:textSize="18sp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@+id/txtViewLuogo"
+        android:layout_alignLeft="@+id/txtTitolo"
+        android:layout_alignStart="@+id/txtTitolo"
+        android:id="@+id/txtLuogo" />
+
+    <TextView
+        android:text="Data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/txtViewData"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/txtLuogo"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Ora inizio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtViewOraInizio"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/txtData"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/txtOraInizio"
+        android:inputType="text"
+        android:layout_below="@+id/txtViewOraInizio"
+        android:layout_alignLeft="@+id/txtData"
+        android:layout_alignStart="@+id/txtData" />
+
+    <TextView
+        android:text="Ora fine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtViewOraFine"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/txtOraInizio"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/txtOraFine"
+        android:textSize="18sp"
+        android:layout_below="@+id/txtViewOraFine"
+        android:layout_alignLeft="@+id/txtOraInizio"
+        android:layout_alignStart="@+id/txtOraInizio" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/txtData"
+        android:inputType="text"
+        android:layout_below="@+id/txtViewData"
+        android:layout_alignLeft="@+id/txtLuogo"
+        android:layout_alignStart="@+id/txtLuogo" />
+
+</RelativeLayout>

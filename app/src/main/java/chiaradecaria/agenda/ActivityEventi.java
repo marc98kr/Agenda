@@ -8,12 +8,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Calendar;
-
+/**
+ * @author Chiara De Caria
+ * Activity che mostra gli eventi di una determinata data, consente l'aggiunta di un nuovo evento e la modifica di un evento selezionato.
+ * */
 public class ActivityEventi extends AppCompatActivity {
     private DBManager dbManager;
     private CursorAdapter adapterEventi;
@@ -38,6 +42,8 @@ public class ActivityEventi extends AppCompatActivity {
 
             @Override
             public void bindView(View view, Context context, Cursor cursor) {
+                String id = cursor.getString(cursor.getColumnIndex(DBStrings.ID));
+                Log.i("ActivityEventi", "ID Evento " + id);
                 String titolo = cursor.getString(cursor.getColumnIndex(DBStrings.TITOLO_EVENTO));
                 String luogo = cursor.getString(cursor.getColumnIndex(DBStrings.LUOGO));
                 String data = cursor.getString(cursor.getColumnIndex(DBStrings.DATA));
@@ -56,6 +62,18 @@ public class ActivityEventi extends AppCompatActivity {
             }
         };
         listViewEventi.setAdapter(adapterEventi);
+        listViewEventi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                visualizzaEvento(id);
+            }
+        });
+    }
+    private void visualizzaEvento(long id){
+        Intent intent = new Intent(ActivityEventi.this, ActivityVisualizzaEvento.class);
+        intent.putExtra("id_evento", id);
+        startActivity(intent);
+        this.finish();
     }
     public void btnAggiungiEventoOnClick(View view) {
         Intent intent = new Intent(this, ActivityAggiungiEvento.class);

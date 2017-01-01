@@ -18,7 +18,10 @@
         <activity
             android:name=".ActivityEventi"
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity android:name=".ActivityAggiungiEvento" android:theme="@style/Theme.AppCompat.Dialog"></activity>
+        <activity
+            android:name=".ActivityAggiungiEvento"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity android:name=".ActivityVisualizzaEvento"></activity>
     </application>
 
 </manifest>

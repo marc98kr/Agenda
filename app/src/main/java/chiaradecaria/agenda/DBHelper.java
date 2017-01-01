@@ -13,7 +13,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String NOME_DB="DBEventi";
 
     public DBHelper(Context applicationContext){
-        super(applicationContext, NOME_DB, null, 1);
+        super(applicationContext, NOME_DB, null, 3);
     }
 
     @Override
