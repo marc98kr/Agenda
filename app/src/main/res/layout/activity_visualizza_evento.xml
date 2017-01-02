@@ -111,4 +111,33 @@
         android:layout_alignLeft="@+id/txtLuogo"
         android:layout_alignStart="@+id/txtLuogo" />
 
+    <TextView
+        android:text="Distanza dal luogo dell'incontro: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtOraFine"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/txtViewDistanza"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDistanzaTempo"
+        android:layout_below="@+id/txtViewDistanza"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/btnGoogleMaps"
+        android:background="@drawable/icona_google_maps"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="btnGoogleMapsOnClick"
+        android:layout_marginBottom="23dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/txtViewDistanza"
+        android:layout_alignEnd="@+id/txtViewDistanza" />
+
 </RelativeLayout>
