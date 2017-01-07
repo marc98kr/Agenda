@@ -9,7 +9,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="chiaradecaria.agenda.ActivityEventi"
     android:layout_height="450dp"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:background="@android:color/holo_blue_light">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtViewData"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:textStyle="normal|bold"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="Clicca su uno degli eventi per visualizzarlo e modificarlo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:paddingBottom="0dp"
+        android:padding="5dp"
+        android:layout_marginTop="40dp"
+        android:textColor="@android:color/black" />
 
     <Button
         android:text="Aggiungi evento"
@@ -19,7 +40,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center_vertical"
-        android:onClick="btnAggiungiEventoOnClick"/>
+        android:onClick="btnAggiungiEventoOnClick"
+        android:background="@android:color/holo_red_dark"
+        style="@style/Widget.AppCompat.Button"
+        android:textColor="@android:color/black"
+        android:textAllCaps="false" />
 
     <ListView
         android:layout_width="match_parent"
@@ -29,6 +54,7 @@
         android:layout_alignParentStart="true"
         android:layout_above="@+id/btnAggiungiEvento"
         android:id="@+id/listViewEventi"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="90dp"
         android:padding="5dp" />
+
 </RelativeLayout>

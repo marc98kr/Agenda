@@ -81,8 +81,9 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
         db = new DBManager(this);
         mostraEvento();
     }
+
     /**Metodo che prende l'evento dal db e lo mostra*/
-    private void mostraEvento(){
+    private void mostraEvento() {
         try {
             Cursor cursor = db.getEvento(idEvento);
             cursor.moveToFirst();
@@ -97,27 +98,29 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             ((EditText) findViewById(R.id.txtData)).setText(data);
             ((EditText) findViewById(R.id.txtOraInizio)).setText(oraInizio);
             ((EditText) findViewById(R.id.txtOraFine)).setText(oraFine);
-        }catch(CursorIndexOutOfBoundsException ex){
+        } catch (CursorIndexOutOfBoundsException ex) {
             Log.e("A.VisualizzaEvento", ex.getLocalizedMessage());
         }
     }
+
     /**Metodo che aggiorna i dati dell'evento all'interno del db*/
-    private void aggiornaEvento(){
+    private void aggiornaEvento() {
         String titolo = ((EditText) findViewById(R.id.txtTitolo)).getText().toString();
         String luogo = ((EditText) findViewById(R.id.txtLuogo)).getText().toString();
         String data = ((EditText) findViewById(R.id.txtData)).getText().toString();
         String oraInizio = ((EditText) findViewById(R.id.txtOraInizio)).getText().toString();
         String oraFine = ((EditText) findViewById(R.id.txtOraFine)).getText().toString();
         //Se uno dei campi risulta vuoto non salvo le modifiche
-        if(titolo.isEmpty() || luogo.isEmpty() || data.isEmpty() || oraInizio.isEmpty() || oraFine.isEmpty())
+        if (titolo.isEmpty() || luogo.isEmpty() || data.isEmpty() || oraInizio.isEmpty() || oraFine.isEmpty())
             Toast.makeText(this, "Uno dei campi risulta vuoto!\nModifiche non salvate", Toast.LENGTH_SHORT).show();
         else {
             db.aggiornaEvento(idEvento, titolo, luogo, data, oraInizio, oraFine);
             Toast.makeText(this, "Evento salvato!", Toast.LENGTH_SHORT);
         }
     }
-    private String[] estraiDati(String risposta){
-        try{
+
+    private String[] estraiDati(String risposta) {
+        try {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             InputSource source = new InputSource();
             source.setCharacterStream(new StringReader(risposta));
@@ -128,26 +131,35 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             distanza = estraiDistanza(distanza);
             Log.i("A.VisualizzaEventi", "Dati: " + distanza + " (" + durata + ")");
             return new String[]{distanza, durata};
-        }catch(Exception e){
+        } catch (Exception e) {
             Log.e("A.VisualizzaEvento", "Errore estraiDati(String): " + e.getLocalizedMessage());
             return null;
         }
     }
-    private String estraiDistanza(String distanza){
+
+    private String estraiDistanza(String distanza) {
         distanza = distanza.substring(1, distanza.indexOf("\n", 1)).replaceAll("\\s", "");
         double d = Double.parseDouble(distanza);
         d /= 1000;
         return d + " km";
     }
-    private String estraiDurata(String durata){
+
+    private String estraiDurata(String durata) {
         durata = durata.substring(1, durata.indexOf("\n", 1)).replaceAll("\\s", "");
         long durataTot = Long.parseLong(durata);
         //La durata inviata dal server di Google Maps è espressa in secondi
         long ore = durataTot / 3600;
         long minuti = (durataTot % 3600) / 60;
-        return "" + ore + ":" + minuti;
+        if (ore == 0)
+            return minuti + " minuti";
+        else if (minuti == 0)
+            return ore + " ore";
+        else
+            return "" + ore + " ore e " + minuti + " minuti";
+
     }
-    private String richiediDistanza(String urlRichiesta, String urlParameters){
+
+    private String richiediDistanza(String urlRichiesta, String urlParameters) {
         //Creo un oggetto di classe HttpURLConnection per stabilire la connessione
         HttpURLConnection connection = null;
         try {
@@ -183,13 +195,14 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             }
         }
     }
+
     /**Alla pressione del tasto Google Maps si aprirà l'applicazione Maps per visualizzare il logo dell'incontro direttamente sulla mappa, con la possibilità di ottenere le indicazioni o attivare il navigatore*/
     public void btnGoogleMapsOnClick(View view) {
         String luogo = ((EditText) findViewById(R.id.txtLuogo)).getText().toString();
         Uri uri = Uri.parse("geo:0,0?q=" + luogo);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         intent.setPackage("com.google.android.apps.maps");
-        if(intent.resolveActivity(getPackageManager()) != null)
+        if (intent.resolveActivity(getPackageManager()) != null)
             startActivity(intent);
         else
             Toast.makeText(this, "Google Maps non installato su questo dispositivo!", Toast.LENGTH_SHORT).show();
@@ -220,6 +233,9 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ((LocationManager) getSystemService(LOCATION_SERVICE)).removeUpdates(locationListener);
+        }
         aggiornaEvento();
     }
 

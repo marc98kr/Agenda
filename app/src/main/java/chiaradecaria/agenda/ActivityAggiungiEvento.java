@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.StringTokenizer;
 
 public class ActivityAggiungiEvento extends AppCompatActivity {
     DBManager dbManager;
@@ -18,18 +21,20 @@ public class ActivityAggiungiEvento extends AppCompatActivity {
         this.setTitle("Aggiungi un evento per il " + data);
         dbManager = new DBManager(this);
     }
-
     public void btnSalvaOnClick(View view) {
         String titolo, luogo, oraInizio, oraFine;
         titolo = ((EditText) findViewById(R.id.txtTitolo)).getText().toString();
         luogo = ((EditText) findViewById(R.id.txtLuogo)).getText().toString();
         oraInizio = ((EditText) findViewById(R.id.txtOrarioInizio)).getText().toString();
         oraFine = ((EditText) findViewById(R.id.txtOrarioFine)).getText().toString();
-        dbManager.aggiungiEvento(titolo, data, luogo, oraInizio, oraFine);
-        setResult(1);
+        if(titolo.isEmpty() || luogo.isEmpty() || oraInizio.isEmpty() || oraFine.isEmpty())
+            Toast.makeText(this, "Uno dei campi risulta vuoto!\nImpossibile aggiungere l'evento.", Toast.LENGTH_SHORT).show();
+        else{
+            dbManager.aggiungiEvento(titolo, data, luogo, oraInizio, oraFine);
+            setResult(1);
+        }
         this.finish();
     }
-
     @Override
     public void onBackPressed() {
         setResult(0);

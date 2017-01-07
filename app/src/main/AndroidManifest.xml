@@ -19,10 +19,10 @@
         </activity>
         <activity
             android:name=".ActivityEventi"
-            android:theme="@style/Theme.AppCompat.Dialog" />
+            android:theme="@style/DialogStyle" />
         <activity
             android:name=".ActivityAggiungiEvento"
-            android:theme="@style/Theme.AppCompat.Dialog" />
+            android:theme="@style/Theme.AppCompat" />
         <activity android:name=".ActivityVisualizzaEvento"></activity>
     </application>
 

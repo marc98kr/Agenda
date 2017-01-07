@@ -28,7 +28,7 @@ public class ActivityEventi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eventi);
         data = getIntent().getStringExtra("data");
-        this.setTitle("Eventi del " + data);
+        ((TextView) findViewById(R.id.txtViewData)).setText("Eventi del\n" + data);
         Log.i("ActivityEventi", "Data ricevuta: " + data);
         dbManager = new DBManager(this);
         listViewEventi = (ListView) findViewById(R.id.listViewEventi);

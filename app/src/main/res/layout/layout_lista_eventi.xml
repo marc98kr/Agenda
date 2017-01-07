@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_margin="10dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -8,7 +9,8 @@
         android:layout_below="@+id/txtViewTitolo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/txtViewLuogo" />
+        android:id="@+id/txtViewLuogo"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,14 +18,17 @@
         android:layout_below="@+id/txtViewLuogo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/txtViewOraInizio" />
+        android:id="@+id/txtViewOraInizio"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtViewTitolo"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +36,8 @@
         android:layout_below="@+id/txtViewOraInizio"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/txtViewOraFine" />
+        android:id="@+id/txtViewOraFine"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
