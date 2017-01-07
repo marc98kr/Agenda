@@ -1,7 +1,9 @@
 package chiaradecaria.agenda;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.location.Location;
@@ -9,6 +11,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,8 +19,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
@@ -26,25 +31,51 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class ActivityVisualizzaEvento extends AppCompatActivity implements LocationListener{
+
+public class ActivityVisualizzaEvento extends AppCompatActivity implements LocationListener {
     DBManager db;
     long idEvento;
     double lat, lng;
+    private LocationListener locationListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizza_evento);
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        try{
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 1, this);
-        }catch(SecurityException ex){
-            Log.e("A.VisualizzaEventi", "Errore onCreate(): " + ex.getLocalizedMessage());
-            Toast.makeText(this, "Impossibile ottenere la posizione", Toast.LENGTH_SHORT);
-        }
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                String luogo = ((EditText) findViewById(R.id.txtLuogo)).getText().toString();
+                String partenza = location.getLatitude() + "," + location.getLongitude();
+                Log.i("A.VisualizzaEventi", "Posizione: " + partenza);
+                new RichiediDati().execute(partenza, luogo.replaceAll("\\s+", ""));
+            }
 
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+                Log.w("A.VisualizzaEventi", "Nuovo stato: " + status + " (" + provider + ")");
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+                Log.w("A.VisualizzaEventi", "Provider disabilitato");
+            }
+        };
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        //Controllo se è garantito il permesso della posizione
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+            Toast.makeText(this, "Il permesso per l'utilizzo della posizione non è attivo, impossibile determinare la distanza dal luogo dell'evento!", Toast.LENGTH_SHORT).show();
+        else
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 1000, locationListener);
         idEvento = getIntent().getExtras().getLong("id_evento");
         Log.i("A.VisualizzaEvento", "id evento: " + idEvento);
         db = new DBManager(this);
@@ -70,14 +101,20 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             Log.e("A.VisualizzaEvento", ex.getLocalizedMessage());
         }
     }
-    /**Metodo che aggiorna l'evento*/
+    /**Metodo che aggiorna i dati dell'evento all'interno del db*/
     private void aggiornaEvento(){
         String titolo = ((EditText) findViewById(R.id.txtTitolo)).getText().toString();
         String luogo = ((EditText) findViewById(R.id.txtLuogo)).getText().toString();
         String data = ((EditText) findViewById(R.id.txtData)).getText().toString();
         String oraInizio = ((EditText) findViewById(R.id.txtOraInizio)).getText().toString();
         String oraFine = ((EditText) findViewById(R.id.txtOraFine)).getText().toString();
-        db.aggiornaEvento(idEvento, titolo, luogo, data, oraInizio, oraFine);
+        //Se uno dei campi risulta vuoto non salvo le modifiche
+        if(titolo.isEmpty() || luogo.isEmpty() || data.isEmpty() || oraInizio.isEmpty() || oraFine.isEmpty())
+            Toast.makeText(this, "Uno dei campi risulta vuoto!\nModifiche non salvate", Toast.LENGTH_SHORT).show();
+        else {
+            db.aggiornaEvento(idEvento, titolo, luogo, data, oraInizio, oraFine);
+            Toast.makeText(this, "Evento salvato!", Toast.LENGTH_SHORT);
+        }
     }
     private String[] estraiDati(String risposta){
         try{
@@ -178,6 +215,12 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        aggiornaEvento();
     }
 
     /**Necessario per eseguire operazioni tramite Internet*/
