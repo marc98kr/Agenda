@@ -3,7 +3,6 @@ package chiaradecaria.agenda;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.icu.util.GregorianCalendar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +12,6 @@ import android.widget.CalendarView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.Calendar;
 
 /**
@@ -23,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private DBManager dbManager;
     private CursorAdapter listaEventi;
     private ListView listViewEventi;
-    String data;
+    private String data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
     private void aggiornaListaEventi(){
         listaEventi.changeCursor(dbManager.getEventi(data));
     }
+
     public void btnSalvaOnClick(View view) {
         salva();
     }

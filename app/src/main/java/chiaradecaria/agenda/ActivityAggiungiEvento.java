@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.StringTokenizer;
+
 
 public class ActivityAggiungiEvento extends AppCompatActivity {
     DBManager dbManager;
