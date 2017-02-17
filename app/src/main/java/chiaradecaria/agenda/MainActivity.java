@@ -26,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ((CalendarView) findViewById(R.id.calendarView)).setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        /*((CalendarView) findViewById(R.id.calendarView)).setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 String dataSelezionata = "" + dayOfMonth + "/" + (month + 1) + "/" + year;
                 mostraEventi(dataSelezionata);
             }
-        });
+        });*/
         dbManager = new DBManager(this);
         String[] cn = dbManager.getColumnNames();
         for(int i=0; i<cn.length; i++)

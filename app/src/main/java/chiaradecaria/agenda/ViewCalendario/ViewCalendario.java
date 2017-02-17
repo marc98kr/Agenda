@@ -4,7 +4,6 @@ package chiaradecaria.agenda.ViewCalendario;
  * @author Chiara De Caria
  */
 import android.content.Context;
-import android.media.Image;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,7 +30,7 @@ public class ViewCalendario extends LinearLayout {
     private Button btnMostraEventi;
     private static final int MAX_CALENDAR_COLUMN = 42;
     private int anno, mese;
-    private SimpleDateFormat formatoData = new SimpleDateFormat("MMMM yyyy", Locale.ITALIAN);
+    private SimpleDateFormat formatoData = new SimpleDateFormat("MMMM yyyy", Locale.ITALY);
     private Calendar calendario = Calendar.getInstance(Locale.ITALY);
     private Context context;
     private GridAdapterCalendario gridAdapterCalendario;
@@ -42,6 +40,13 @@ public class ViewCalendario extends LinearLayout {
         inizializzaUI();
         setListenerTasti();
         setEventiClickCella();
+        impostaAdapterCalendario();
+    }
+    public ViewCalendario(Context context){
+        super(context);
+    }
+    public ViewCalendario(Context context, AttributeSet attrs, int defStyleAttr){
+        super(context, attrs, defStyleAttr);
     }
     private void inizializzaUI(){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -61,7 +66,7 @@ public class ViewCalendario extends LinearLayout {
             d.add(cal.getTime());
             cal.add(Calendar.DAY_OF_MONTH, 1);
         }
-        String data = formatoData.format(cal.getTime());
+        String data = formatoData.format(calendario.getTime());
         dataCorrente.setText(data);
         gridAdapterCalendario = new GridAdapterCalendario(context, d, cal);
         gridViewCalendario.setAdapter(gridAdapterCalendario);
