@@ -103,6 +103,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:id="@+id/btnSalva"
-        android:onClick="btnSalvaOnClick"/>
+        android:onClick="btnSalvaOnClick"
+        android:background="?attr/colorButtonNormal" />
 
 </RelativeLayout>

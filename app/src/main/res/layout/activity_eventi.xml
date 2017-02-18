@@ -10,7 +10,7 @@
     tools:context="chiaradecaria.agenda.ActivityEventi"
     android:layout_height="450dp"
     android:layout_gravity="center"
-    android:background="@android:color/holo_blue_light">
+    android:background="@color/colorPrimary">
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center_vertical"
         android:onClick="btnAggiungiEventoOnClick"
-        android:background="@android:color/holo_red_dark"
+        android:background="?attr/colorButtonNormal"
         style="@style/Widget.AppCompat.Button"
         android:textColor="@android:color/black"
         android:textAllCaps="false" />
