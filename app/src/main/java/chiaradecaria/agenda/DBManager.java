@@ -23,6 +23,7 @@ public class DBManager {
     }
     /**Metodo che si occupa dell'aggiunta di un evento*/
     public boolean aggiungiEvento(String titoloEvento, String data, String luogo, String oraInizio, String oraFine){
+        Log.i("DBManager", "Inserisco un evento, data: " + data);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues nuovaRiga = new ContentValues();
         nuovaRiga.put(DBStrings.TITOLO_EVENTO, titoloEvento);

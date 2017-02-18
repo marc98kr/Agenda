@@ -3,7 +3,9 @@ package chiaradecaria.agenda.ViewCalendario;
 /**
  * @author Chiara De Caria
  */
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import chiaradecaria.agenda.ActivityEventi;
 import chiaradecaria.agenda.R;
 
 public class ViewCalendario extends LinearLayout {
@@ -40,15 +43,40 @@ public class ViewCalendario extends LinearLayout {
         this.context = context;
         inizializzaUI();
         setListenerTasti();
-        setEventiClickCella();
-        impostaAdapterCalendario();
+        setOnClickListenerGiorno();
     }
+    private void setOnClickListenerGiorno(){
 
+        gridViewCalendario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Date giorno = (Date) parent.getItemAtPosition(position);
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(giorno);
+                String data = calendar.get(Calendar.DAY_OF_MONTH) + "/" + (calendar.get(Calendar.MONTH)+1) + "/" + calendar.get(Calendar.YEAR);
+                mostraEventi(data);
+                Log.i("ViewCalendario", "Giorno cliccato " + giorno.toString());
+                Log.i("ViewCalendario", "È stato cliccato " + position);
+            }
+        });
+    }
+    public void mostraEventi(String data){
+        Intent intent = new Intent(context, ActivityEventi.class);
+        intent.putExtra("data", data);
+        context.startActivity(intent);
+    }
     public ViewCalendario(Context context){
         super(context);
+        inizializzaUI();
+        setListenerTasti();
+        setOnClickListenerGiorno();
     }
+
     public ViewCalendario(Context context, AttributeSet attrs, int defStyleAttr){
         super(context, attrs, defStyleAttr);
+        inizializzaUI();
+        setListenerTasti();
+        setOnClickListenerGiorno();
     }
 
     private void inizializzaUI(){
@@ -93,12 +121,4 @@ public class ViewCalendario extends LinearLayout {
         });
     }
 
-    private void setEventiClickCella(){
-        gridViewCalendario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i("ViewCalendario", "È stato cliccato " + position);
-            }
-        });
-    }
 }

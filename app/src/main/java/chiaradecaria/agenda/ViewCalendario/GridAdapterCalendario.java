@@ -67,9 +67,6 @@ public class GridAdapterCalendario extends ArrayAdapter{
             dataEvento.setTime(eventi.get(i).getData());
             if(dataEvento.get(Calendar.DAY_OF_MONTH) == giorno && dataEvento.get(Calendar.MONTH) + 1 == mese && dataEvento.get(Calendar.YEAR) == anno)
                 segnoEvento.setBackgroundColor(Color.parseColor("#FF4081"));
-                /**eventCalendar.setTime(allEvents.get(i).getDate());
-                 if(dayValue == eventCalendar.get(Calendar.DAY_OF_MONTH) && displayMonth == eventCalendar.get(Calendar.MONTH) + 1
-                 && displayYear == eventCalendar.get(Calendar.YEAR)){*/
         }
         giornoCalendario.setText("" + giorno);
         return view;
