@@ -7,6 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 /**
  * @author Chiara De Caria
  */
@@ -47,7 +52,7 @@ public class DBManager {
         }
     }
     /**Metodo che restituisce tutti gli eventi dal database*/
-    public Cursor getEventi(){
+    /*public Cursor getEventi(){
         Cursor cursor;
         try{
             SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -57,7 +62,7 @@ public class DBManager {
             return null;
         }
         return cursor;
-    }
+    }*/
     /**Metodo che restituisce gli eventi di una certa data*/
     public Cursor getEventi(String data){
         Cursor cursor;
@@ -75,6 +80,40 @@ public class DBManager {
             return null;
         }
         return cursor;
+    }
+    /**Metodo che ritorna una lista contenenti tutti gli eventi*/
+    public List<Evento> getEventi(){
+        Cursor cursor;
+        List<Evento> eventi = new ArrayList<Evento>();
+        try{
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            cursor = db.query(DBStrings.NOME_TABELLA, null, null, null, null, null, null);
+            if(cursor.moveToFirst()){
+                Date dataOggi = new Date();
+                do{
+                    try {
+                        long id = cursor.getLong(cursor.getColumnIndex(DBStrings.ID));
+                        String titolo = cursor.getString(cursor.getColumnIndex(DBStrings.TITOLO_EVENTO));
+                        String oraInizio = cursor.getString(cursor.getColumnIndex(DBStrings.ORA_INIZIO));
+                        String oraFine = cursor.getString(cursor.getColumnIndex(DBStrings.ORA_FINE));
+                        String data = cursor.getString(cursor.getColumnIndex(DBStrings.DATA));
+                        String luogo = cursor.getString(cursor.getColumnIndex(DBStrings.LUOGO));
+                        Evento e = new Evento(id, titolo, oraInizio, oraFine, data, luogo);
+                        //if(e.getData().after(dataOggi) || e.getData().equals(dataOggi))
+                            eventi.add(e);
+                    } catch (ParseException e) {
+                        Log.i("DBManager", "Errore: " + e.getMessage());
+                        return null;
+                    }
+                }while(cursor.moveToNext());
+                cursor.close();
+                return eventi;
+            }
+        }catch(SQLiteException ex){
+            Log.e("DBManager", "Errore getEventi(): " + ex.getLocalizedMessage());
+            return null;
+        }
+        return eventi;
     }
     /**Metodo che ritorna un evento dato un ID*/
     public Cursor getEvento(long id){

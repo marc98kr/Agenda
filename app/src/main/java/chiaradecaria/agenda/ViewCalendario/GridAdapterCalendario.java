@@ -12,13 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import chiaradecaria.agenda.DBManager;
+import chiaradecaria.agenda.Evento;
 import chiaradecaria.agenda.R;
 
 public class GridAdapterCalendario extends ArrayAdapter{
@@ -26,12 +26,15 @@ public class GridAdapterCalendario extends ArrayAdapter{
     private List<Date> dateMesi;
     private Calendar dataCorrente;
     private String[] giorniFestivi = {"1/1", "6/1", "25/4", "1/5", "2/6", "15/8", "1/11", "8/12", "25/12", "26/12"};
+    DBManager dbManager;
     public GridAdapterCalendario(Context context, List<Date> dateMesi, Calendar dataCorrente){
         super(context, R.layout.layout_cella_calendario);
         this.dateMesi = dateMesi;
         this.dataCorrente = dataCorrente;
         inflater = LayoutInflater.from(context);
+        dbManager = new DBManager(context);
     }
+
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
@@ -47,9 +50,8 @@ public class GridAdapterCalendario extends ArrayAdapter{
         View view = convertView;
         if(view == null)
             view = inflater.inflate(R.layout.layout_cella_calendario, parent, false);
-
         if(mese == meseCorrente && anno == annoCorrente){
-            if(festivo(giorno + "/" + mese) || giornoSettimana == Calendar.SUNDAY)
+            if(festivo(giorno + "/" + mese))
                 view.setBackgroundColor(Color.parseColor("#cc0000"));
             else
                 view.setBackgroundColor(Color.parseColor("#00aaff"));
@@ -57,22 +59,38 @@ public class GridAdapterCalendario extends ArrayAdapter{
         else
             view.setBackgroundColor(Color.parseColor("#ffffff"));
         TextView giornoCalendario = (TextView) view.findViewById(R.id.giorno_calendario);
+        List<Evento> eventi = dbManager.getEventi();
+        TextView segnoEvento = (TextView) view.findViewById(R.id.segna_evento);
+        Calendar dataEvento = Calendar.getInstance();
+        /**Se ci sono eventi per questo giorno, colora una text view per segnalare un evento segnato*/
+        for(int i=0; i<eventi.size(); i++){
+            dataEvento.setTime(eventi.get(i).getData());
+            if(dataEvento.get(Calendar.DAY_OF_MONTH) == giorno && dataEvento.get(Calendar.MONTH) + 1 == mese && dataEvento.get(Calendar.YEAR) == anno)
+                segnoEvento.setBackgroundColor(Color.parseColor("#FF4081"));
+                /**eventCalendar.setTime(allEvents.get(i).getDate());
+                 if(dayValue == eventCalendar.get(Calendar.DAY_OF_MONTH) && displayMonth == eventCalendar.get(Calendar.MONTH) + 1
+                 && displayYear == eventCalendar.get(Calendar.YEAR)){*/
+        }
         giornoCalendario.setText("" + giorno);
         return view;
     }
+
     @Override
     public int getCount(){
         return dateMesi.size();
     }
+
     @Nullable
     @Override
     public Object getItem(int position){
         return dateMesi.get(position);
     }
+
     @Override
     public int getPosition(Object item){
         return dateMesi.indexOf(item);
     }
+
     /**Metodo che ritorna true se la data(mm/gg) passata come parametro è fesitiva*/
     private boolean festivo(String data){
         if(Arrays.asList(giorniFestivi).contains(data))

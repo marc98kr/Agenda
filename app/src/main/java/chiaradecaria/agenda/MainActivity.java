@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
         dbManager = new DBManager(this);
-        String[] cn = dbManager.getColumnNames();
-        for(int i=0; i<cn.length; i++)
-            Log.i("MainActivity", "Colonna: " + cn[i]);
         listViewEventi = (ListView) findViewById(R.id.listViewEventiOggi);
         //Ottengo la data odierna...
         Calendar calendar = Calendar.getInstance();

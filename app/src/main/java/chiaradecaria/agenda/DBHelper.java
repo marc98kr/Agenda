@@ -15,7 +15,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public DBHelper(Context applicationContext){
         super(applicationContext, NOME_DB, null, 3);
     }
-
+    /**Gestione della creazione del db*/
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.i("DBHelper", "Creo il db...");
@@ -29,7 +29,10 @@ public class DBHelper extends SQLiteOpenHelper{
                                 DBStrings.ORA_FINE + " TEXT );";
         db.execSQL(queryCreazione);
     }
-
+    /**Gestione dell'aggiornamento del db*/
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + DBStrings.NOME_TABELLA);
+        onCreate(db);
+    }
 }

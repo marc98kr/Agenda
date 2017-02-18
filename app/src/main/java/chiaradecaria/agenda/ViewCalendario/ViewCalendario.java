@@ -34,6 +34,7 @@ public class ViewCalendario extends LinearLayout {
     private Calendar calendario = Calendar.getInstance(Locale.ITALY);
     private Context context;
     private GridAdapterCalendario gridAdapterCalendario;
+
     public ViewCalendario(Context context, AttributeSet attrs){
         super(context, attrs);
         this.context = context;
@@ -42,12 +43,14 @@ public class ViewCalendario extends LinearLayout {
         setEventiClickCella();
         impostaAdapterCalendario();
     }
+
     public ViewCalendario(Context context){
         super(context);
     }
     public ViewCalendario(Context context, AttributeSet attrs, int defStyleAttr){
         super(context, attrs, defStyleAttr);
     }
+
     private void inizializzaUI(){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.layout_calendario, this);
@@ -56,6 +59,7 @@ public class ViewCalendario extends LinearLayout {
         dataCorrente = (TextView) view.findViewById(R.id.txtDataSelezionata);
         gridViewCalendario = (GridView) view.findViewById(R.id.grid_view_calendario);
     }
+
     private void impostaAdapterCalendario(){
         List<Date> d = new ArrayList<Date>();
         Calendar cal =(Calendar) calendario.clone();
@@ -71,6 +75,7 @@ public class ViewCalendario extends LinearLayout {
         gridAdapterCalendario = new GridAdapterCalendario(context, d, cal);
         gridViewCalendario.setAdapter(gridAdapterCalendario);
     }
+
     private void setListenerTasti(){
         mesePrecedente.setOnClickListener(new OnClickListener() {
             @Override
@@ -87,6 +92,7 @@ public class ViewCalendario extends LinearLayout {
             }
         });
     }
+
     private void setEventiClickCella(){
         gridViewCalendario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
