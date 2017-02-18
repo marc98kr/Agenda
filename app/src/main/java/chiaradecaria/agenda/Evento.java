@@ -17,14 +17,6 @@ public class Evento {
     private Date data;
     private String luogo;
 
-    public String getLuogo() {
-        return luogo;
-    }
-
-    public void setLuogo(String luogo) {
-        this.luogo = luogo;
-    }
-
     public Evento(long idEvento, String titolo, String oraInizio, String oraFine, String data, String luogo) throws ParseException{
         this.idEvento = idEvento;
         this.titolo = titolo;
@@ -74,5 +66,13 @@ public class Evento {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public String getLuogo() {
+        return luogo;
+    }
+
+    public void setLuogo(String luogo) {
+        this.luogo = luogo;
     }
 }
