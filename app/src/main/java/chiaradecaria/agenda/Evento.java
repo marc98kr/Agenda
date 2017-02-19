@@ -1,5 +1,7 @@
 package chiaradecaria.agenda;
 
+import android.util.Log;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,7 +24,7 @@ public class Evento {
         this.titolo = titolo;
         this.oraInizio = oraInizio;
         this.oraFine = oraFine;
-        DateFormat formatoData = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
+        DateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
         this.data = formatoData.parse(data);
         this.luogo = luogo;
 

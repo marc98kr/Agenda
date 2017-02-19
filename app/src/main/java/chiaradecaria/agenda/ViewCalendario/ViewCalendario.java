@@ -46,7 +46,6 @@ public class ViewCalendario extends LinearLayout {
         setOnClickListenerGiorno();
     }
     private void setOnClickListenerGiorno(){
-
         gridViewCalendario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -60,11 +59,13 @@ public class ViewCalendario extends LinearLayout {
             }
         });
     }
+
     public void mostraEventi(String data){
         Intent intent = new Intent(context, ActivityEventi.class);
         intent.putExtra("data", data);
         context.startActivity(intent);
     }
+    
     public ViewCalendario(Context context){
         super(context);
         inizializzaUI();
@@ -80,6 +81,7 @@ public class ViewCalendario extends LinearLayout {
     }
 
     private void inizializzaUI(){
+        Log.i("ViewAclendario", "Inizializzo la UI");
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.layout_calendario, this);
         mesePrecedente = (ImageView) view.findViewById(R.id.mese_precedente);
