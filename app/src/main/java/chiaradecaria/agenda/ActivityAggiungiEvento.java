@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class ActivityAggiungiEvento extends AppCompatActivity {
@@ -27,16 +30,33 @@ public class ActivityAggiungiEvento extends AppCompatActivity {
         luogo = ((EditText) findViewById(R.id.txtLuogo)).getText().toString();
         oraInizio = ((EditText) findViewById(R.id.txtOrarioInizio)).getText().toString();
         oraFine = ((EditText) findViewById(R.id.txtOrarioFine)).getText().toString();
-        if(titolo.isEmpty() || luogo.isEmpty() || oraInizio.isEmpty() || oraFine.isEmpty())
-            Toast.makeText(this, "Uno dei campi risulta vuoto!\nImpossibile aggiungere l'evento.", Toast.LENGTH_SHORT).show();
+        //Se un campo risulta vuoto
+        if(titolo.isEmpty() || luogo.isEmpty() || oraInizio.isEmpty() || oraFine.isEmpty()) //Visualizza un toast per segnalare un campo vuoto
+            Toast.makeText(this, "Uno o più campi risultano vuoti!", Toast.LENGTH_SHORT).show();
         else{
+            try{
+                //Converto le stringhe degli orari in Date per verificare l'orario
+                SimpleDateFormat formatoOrario = new SimpleDateFormat("hh:mm"); //Formato HH:MM 24 ore
+                formatoOrario.setLenient(false);
+                formatoOrario.parse(oraInizio);
+                formatoOrario.parse(oraFine);
+            }catch(ParseException ex){
+                //Eccezione lanciata in caso di orario non valido
+                Toast.makeText(this, "Errore inserimento orario!", Toast.LENGTH_SHORT).show();
+                Log.e("ActivityAggiungiEvento", ex.getLocalizedMessage());
+                //Interrompo il metodo
+                return;
+            }
+            /**Se gli orari inseriti sono corretti e i campi sono stati riempiti, aggiungo l'evento nel database,
+             * imposto il risultato dell'activity ad 1 così da segnalare all'activity precedente l'aggiunta di un nuovo evento*/
             dbManager.aggiungiEvento(titolo, data, luogo, oraInizio, oraFine);
             setResult(1);
+            this.finish();
         }
-        this.finish();
     }
     @Override
     public void onBackPressed() {
+        //Nessun evento aggiunto, imposto il risultato a 0
         setResult(0);
         this.finish();
     }
