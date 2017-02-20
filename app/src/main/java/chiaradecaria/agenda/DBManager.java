@@ -52,18 +52,6 @@ public class DBManager {
             return false;
         }
     }
-    /**Metodo che restituisce tutti gli eventi dal database*/
-    /*public Cursor getEventi(){
-        Cursor cursor;
-        try{
-            SQLiteDatabase db = dbHelper.getReadableDatabase();
-            cursor = db.query(DBStrings.NOME_TABELLA, null, null, null, null, null, null);
-        }catch(SQLiteException ex){
-            Log.e("DBManager", "Errore getEventi(): " + ex.getLocalizedMessage());
-            return null;
-        }
-        return cursor;
-    }*/
     /**Metodo che restituisce gli eventi di una certa data*/
     public Cursor getEventi(String data){
         Cursor cursor;
@@ -108,6 +96,7 @@ public class DBManager {
                     }
                 }while(cursor.moveToNext());
                 cursor.close();
+                db.close();
                 return eventi;
             }
         }catch(SQLiteException ex){
@@ -125,6 +114,7 @@ public class DBManager {
             String query = "SELECT * FROM " + DBStrings.NOME_TABELLA + " WHERE " + DBStrings.NOME_TABELLA + "." + DBStrings.ID + " = " + id + ";";
             Log.i("DBManager", query);
             cursor = db.rawQuery(query, null);
+            db.close();
         }catch(SQLiteException ex){
             Log.e("DBManager", "Errore getEvento(long): " + ex.getLocalizedMessage());
         }
@@ -149,6 +139,7 @@ public class DBManager {
             cv.put(DBStrings.ORA_FINE, oraFine);
             //Aggiorno il db
             db.update(DBStrings.NOME_TABELLA, cv, DBStrings.ID + " = ?", new String[]{"" + id});
+            db.close();
         }catch(SQLiteException ex){
             Log.i("DBManager", "Errore aggiornaEvento(long, String, String, String, String, String): " + ex.getLocalizedMessage());
         }

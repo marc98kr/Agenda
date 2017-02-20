@@ -118,7 +118,7 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             Toast.makeText(this, "Evento salvato!", Toast.LENGTH_SHORT);
         }
     }
-
+    /**Metodo che estrae i dati dal documento xml ricevuto da google*/
     private String[] estraiDati(String risposta) {
         try {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();

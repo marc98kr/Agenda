@@ -3,7 +3,6 @@ package chiaradecaria.agenda.ViewCalendario;
 /**
  * @author Chiara De Caria
  */
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
@@ -44,6 +43,7 @@ public class ViewCalendario extends LinearLayout {
         inizializzaUI();
         setListenerTasti();
         setOnClickListenerGiorno();
+        impostaAdapterCalendario();
     }
     private void setOnClickListenerGiorno(){
         gridViewCalendario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,12 +65,13 @@ public class ViewCalendario extends LinearLayout {
         intent.putExtra("data", data);
         context.startActivity(intent);
     }
-    
+
     public ViewCalendario(Context context){
         super(context);
         inizializzaUI();
         setListenerTasti();
         setOnClickListenerGiorno();
+        impostaAdapterCalendario();
     }
 
     public ViewCalendario(Context context, AttributeSet attrs, int defStyleAttr){
@@ -78,6 +79,7 @@ public class ViewCalendario extends LinearLayout {
         inizializzaUI();
         setListenerTasti();
         setOnClickListenerGiorno();
+        impostaAdapterCalendario();
     }
 
     private void inizializzaUI(){
@@ -92,6 +94,7 @@ public class ViewCalendario extends LinearLayout {
 
     private void impostaAdapterCalendario(){
         List<Date> d = new ArrayList<Date>();
+        Log.i("ViewCalendario", "" + calendario.get(Calendar.MONTH));
         Calendar cal =(Calendar) calendario.clone();
         cal.set(Calendar.DAY_OF_MONTH, 1);
         int primoGiornoDelMese = cal.get(Calendar.DAY_OF_WEEK) - 1;

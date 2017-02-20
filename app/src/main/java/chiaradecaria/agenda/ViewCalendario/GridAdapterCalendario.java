@@ -39,28 +39,32 @@ public class GridAdapterCalendario extends ArrayAdapter{
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
+        Log.i("GridAdapterView", "______________________________________________________________");
         //Giorno da visualizzare
         Date data = giorni.get(position);
         Calendar cal = Calendar.getInstance();
         cal.setTime(data);
-        int giorno = cal.get(Calendar.DAY_OF_MONTH);
+        int giorno = cal.get(Calendar.DAY_OF_MONTH); //Giorno da visualizzare
         int giornoSettimana = cal.get(Calendar.DAY_OF_WEEK);
+        //Mese e anno del giorno da visualizzare
         int mese = cal.get(Calendar.MONTH) + 1;
-        int anno =cal.get(Calendar.YEAR);
+        Log.i("GridAdapterCalendario", "Mese: " + mese);;
+        int anno = cal.get(Calendar.YEAR);
         //Mese e anno visualizzati
         int meseCorrente = dataCorrente.get(Calendar.MONTH);
         int annoCorrente = dataCorrente.get(Calendar.YEAR);
+        Log.i("GridAdapterCalendario", "MeseCorrente: " + meseCorrente + " Mese: " + mese);
         View view = convertView;
         if(view == null)
             view = inflater.inflate(R.layout.layout_cella_calendario, parent, false);
-        //Se il mese e l'anno sono uguali a mese e anno visualizzati...
-        if(mese == meseCorrente && anno == annoCorrente){
-            //...se il giorno è festivo lo coloro di rosso
-            if(festivo(giorno + "/" + mese))
-                view.setBackgroundColor(Color.parseColor("#cc0000"));
-            //altrimenti di blu
-            else
-                view.setBackgroundColor(Color.parseColor("#00aaff"));
+
+        //Se il giorno è festivo lo coloro di rosso
+        if(festivo(giorno + "/" + mese))
+            view.setBackgroundColor(Color.parseColor("#cc0000"));
+        //Se il mese e l'anno sono uguali a mese e anno visualizzati lo coloro di blu
+        else if(mese == meseCorrente && anno == annoCorrente){
+            Log.i("GridAdapterCalendario", "Coloro di blu");
+            view.setBackgroundColor(Color.parseColor("#00aaff"));
         }
         //Se il giorno non appartiene al mese e all'anno visualizzato lo coloro di bianco
         else
@@ -70,11 +74,13 @@ public class GridAdapterCalendario extends ArrayAdapter{
         List<Evento> eventi = dbManager.getEventi();
         TextView segnoEvento = (TextView) view.findViewById(R.id.segna_evento);
         Calendar dataEvento = Calendar.getInstance();
-        /**Se ci sono eventi per questo giorno, colora una text view per segnalare un evento segnato*/
-        for(int i=0; i<eventi.size(); i++){
-            dataEvento.setTime(eventi.get(i).getData());
-            if(dataEvento.get(Calendar.DAY_OF_MONTH) == giorno && (dataEvento.get(Calendar.MONTH) + 1) == mese && dataEvento.get(Calendar.YEAR) == anno)
-                segnoEvento.setBackgroundColor(Color.parseColor("#FF4081"));
+        if(eventi != null) {
+            /**Se ci sono eventi per questo giorno, colora una text view per segnalare un evento segnato*/
+            for (int i = 0; i < eventi.size(); i++) {
+                dataEvento.setTime(eventi.get(i).getData());
+                if (dataEvento.get(Calendar.DAY_OF_MONTH) == giorno && (dataEvento.get(Calendar.MONTH) + 1) == mese && dataEvento.get(Calendar.YEAR) == anno)
+                    segnoEvento.setBackgroundColor(Color.parseColor("#FF4081"));
+            }
         }
         giornoCalendario.setText("" + giorno);
         return view;
