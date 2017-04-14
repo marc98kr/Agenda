@@ -48,7 +48,7 @@ public class GridAdapterCalendario extends ArrayAdapter{
         int giornoSettimana = cal.get(Calendar.DAY_OF_WEEK);
         //Mese e anno del giorno da visualizzare
         int mese = cal.get(Calendar.MONTH) + 1;
-        Log.i("GridAdapterCalendario", "Mese: " + mese);;
+        Log.i("GridAdapterCalendario", "Mese: " + mese);
         int anno = cal.get(Calendar.YEAR);
         //Mese e anno visualizzati
         int meseCorrente = dataCorrente.get(Calendar.MONTH);
@@ -57,7 +57,6 @@ public class GridAdapterCalendario extends ArrayAdapter{
         View view = convertView;
         if(view == null)
             view = inflater.inflate(R.layout.layout_cella_calendario, parent, false);
-
         //Se il giorno è festivo lo coloro di rosso
         if(festivo(giorno + "/" + mese))
             view.setBackgroundColor(Color.parseColor("#cc0000"));

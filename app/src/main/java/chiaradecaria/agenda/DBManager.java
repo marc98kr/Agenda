@@ -70,15 +70,18 @@ public class DBManager {
         }
         return cursor;
     }
-    /**Metodo che ritorna una lista contenenti tutti gli eventi*/
+    /**Metodo che ritorna una lista contenente tutti gli eventi*/
     public List<Evento> getEventi(){
         Cursor cursor;
         List<Evento> eventi = new ArrayList<Evento>();
         try{
-            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            SQLiteDatabase db = null;
+            if(dbHelper != null)
+                db = dbHelper.getReadableDatabase();
+            if(db == null)
+                return null;
             cursor = db.query(DBStrings.NOME_TABELLA, null, null, null, null, null, null);
             if(cursor.moveToFirst()){
-                Date dataOggi = new Date();
                 do{
                     try {
                         long id = cursor.getLong(cursor.getColumnIndex(DBStrings.ID));
@@ -89,14 +92,13 @@ public class DBManager {
                         String luogo = cursor.getString(cursor.getColumnIndex(DBStrings.LUOGO));
                         Evento e = new Evento(id, titolo, oraInizio, oraFine, data, luogo);
                         //if(e.getData().after(dataOggi) || e.getData().equals(dataOggi))
-                            eventi.add(e);
+                        eventi.add(e);
                     } catch (ParseException e) {
                         Log.i("DBManager", "Errore: " + e.getMessage());
                         return null;
                     }
                 }while(cursor.moveToNext());
                 cursor.close();
-                db.close();
                 return eventi;
             }
         }catch(SQLiteException ex){
@@ -114,17 +116,10 @@ public class DBManager {
             String query = "SELECT * FROM " + DBStrings.NOME_TABELLA + " WHERE " + DBStrings.NOME_TABELLA + "." + DBStrings.ID + " = " + id + ";";
             Log.i("DBManager", query);
             cursor = db.rawQuery(query, null);
-            db.close();
         }catch(SQLiteException ex){
             Log.e("DBManager", "Errore getEvento(long): " + ex.getLocalizedMessage());
         }
         return cursor;
-    }
-    public String[] getColumnNames(){
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(DBStrings.NOME_TABELLA, null, null, null, null, null, null);
-        String[] columnNames = cursor.getColumnNames();
-        return columnNames;
     }
     /**Metodo che aggiorna un evento*/
     public void aggiornaEvento(long id, String titolo, String luogo, String data, String oraFine, String oraInizio){

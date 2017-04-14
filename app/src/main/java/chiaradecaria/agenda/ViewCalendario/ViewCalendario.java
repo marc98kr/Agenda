@@ -29,9 +29,7 @@ public class ViewCalendario extends LinearLayout {
     private ImageView mesePrecedente, meseSuccessivo;
     private TextView dataCorrente;
     private GridView gridViewCalendario;
-    private Button btnMostraEventi;
     private static final int MAX_CALENDAR_COLUMN = 42;
-    private int anno, mese;
     private SimpleDateFormat formatoData = new SimpleDateFormat("MMMM yyyy", Locale.ITALY);
     private Calendar calendario = Calendar.getInstance(Locale.ITALY);
     private Context context;
