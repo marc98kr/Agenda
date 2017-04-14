@@ -113,22 +113,23 @@
         android:layout_alignStart="@+id/txtLuogo" />
 
     <TextView
-        android:text="Distanza dal luogo dell'incontro: "
+        android:id="@+id/txtViewDistanza"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtOraFine"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/txtViewDistanza"
+        android:layout_below="@+id/txtOraFine"
+        android:text="Distanza dal luogo dell'evento: "
         android:textColor="@android:color/black" />
 
     <TextView
+        android:id="@+id/txtDistanzaTempo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtDistanzaTempo"
-        android:layout_below="@+id/txtViewDistanza"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtViewDistanza"
+        android:text="In attesa dei dati..." />
 
     <Button
         android:id="@+id/btnGoogleMaps"
@@ -136,10 +137,9 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:onClick="btnGoogleMapsOnClick"
-        android:layout_marginBottom="23dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="bottom"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/txtViewDistanza"
-        android:layout_alignEnd="@+id/txtViewDistanza"
-        android:layout_centerVertical="true"/>
-
+        android:layout_alignLeft="@+id/txtViewTitolo"
+        android:layout_alignStart="@+id/txtViewTitolo" />
 </RelativeLayout>

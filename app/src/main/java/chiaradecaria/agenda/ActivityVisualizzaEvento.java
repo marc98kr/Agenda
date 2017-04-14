@@ -11,6 +11,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Text;
 import org.xml.sax.InputSource;
 
 import java.io.BufferedReader;
@@ -39,7 +41,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class ActivityVisualizzaEvento extends AppCompatActivity implements LocationListener {
     DBManager db;
     long idEvento;
-    double lat, lng;
     private LocationListener locationListener;
 
     @Override
@@ -71,11 +72,12 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             }
         };
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
         //Controllo se è garantito il permesso della posizione
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
             Toast.makeText(this, "Il permesso per l'utilizzo della posizione non è attivo, impossibile determinare la distanza dal luogo dell'evento!", Toast.LENGTH_SHORT).show();
         else
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 1000, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 10000, 1000, locationListener);
         idEvento = getIntent().getExtras().getLong("id_evento");
         Log.i("A.VisualizzaEvento", "id evento: " + idEvento);
         db = new DBManager(this);
@@ -119,6 +121,7 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
         }
     }
     /**Metodo che estrae i dati dal documento xml ricevuto da google*/
+    @Nullable
     private String[] estraiDati(String risposta) {
         try {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -156,9 +159,9 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             return ore + " ore";
         else
             return "" + ore + " ore e " + minuti + " minuti";
-
     }
 
+    @Nullable
     private String richiediDistanza(String urlRichiesta, String urlParameters) {
         //Creo un oggetto di classe HttpURLConnection per stabilire la connessione
         HttpURLConnection connection = null;
@@ -252,7 +255,10 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ((TextView) findViewById(R.id.txtDistanzaTempo)).setText(dati[0] + " (" + dati[1] + ")");
+                        if(dati == null)
+                            ((TextView) findViewById(R.id.txtDistanzaTempo)).setText("Si è verificato un errore nella visualizzazione della distanza e del tempo richiesto.\nVerificare che il campo 'luogo' sia corretto.");
+                        else
+                            ((TextView) findViewById(R.id.txtDistanzaTempo)).setText(dati[0] + " (" + dati[1] + ")");
                     }
                 });
             }catch(Exception ex){

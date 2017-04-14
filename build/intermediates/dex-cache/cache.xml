@@ -2,139 +2,157 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.0\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\cc859d026b9c86047ab9ca48f7d50c5dd0744b39\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
-        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.0_22fdd07e171820ae2e939e7baf098f805898b73e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.0_38e7dcb84a76eb20168e1049ab077db3a97cbeac.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.0_9f6aef3c9e5235658d3046415a62640500a4b781.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="26674000177e45447a0326a6ad84612761199a13">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.0_c7845954a9ac663dff718f1fc8b463c256002a30.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.0\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_c958be7d3c8aa7fc7d643b62749c363708999b78.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.0_81491aa43107f072f368f1de17322dad2e768de6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
+        revision="25.0.0"
         sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.0_c7f48f9df6bc5a28f61d97eea76dc59ffd4c61e9.jar" />
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2cc0b97952bd14287e65284285d0b06776b310cf\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.0\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\47a3759460d5ad02b2bbce667b25e08f9776034c\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
-        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_36ba704db1fa346d3671881569e35f5d2f263eae.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="E:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.0\support-annotations-25.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.0_f28de2a2ee36fc3a41a4b9bcada9866cd09d5ca4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.0_0c99e89e7a4a6635961dcb6c9edd36bde661e6d0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.0_5d9f5c20103969c19988b882d7b66fb15e3c523e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
+        revision="25.0.0"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.0_36fbb264f28124393e522a2b30ecf03b2835a801.jar" />
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c52ffa3443d24067927218e8c541e9d58a782cfb\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.0\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\9d9f1ab4839384beb4ede2a73c11aec1152534b8\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_9da0454238cb9474ea4dac3f538d607116a5572f.jar" />
+        revision="25.0.0"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ab4e38a9bc98e40ca287841749bf24691cdab922\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.0\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\9f700f6565eaf1e360c78ef6b9cd5c30a5be3034\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
+        revision="25.0.0"
         sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_2172fe7f28ea57c412ef9caa68e4258062b8d682.jar" />
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_4846b60d135560c99676350aab94efb496a755bc\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\Agenda\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.0\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="D:\Agenda\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
+        revision="25.0.0"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e576b1ed5998a33ea333d29a7cb343edeeb24f53\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\8a19bd2d774f0f7e7833111905cf56510cd815fc\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ce51a13100bcbbcc2d3c9f922881beb8371bf3fb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\ea36338b2fc8fd10d4bb96aa1b0c6f805c28e544\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_88b700c6d3258e1fbb2fd1d9df79c976d99a1543\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\1daf6d19d80cecce4baf8c4c445442b89944aa6c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_249112efd4a4c2716c2b44a1de856bb97a2bb4be\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\cc859d026b9c86047ab9ca48f7d50c5dd0744b39\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_59416c2aec8f5d493aa9049212d3e22151b2bd30\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.0\support-annotations-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.0_f28de2a2ee36fc3a41a4b9bcada9866cd09d5ca4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\ea36338b2fc8fd10d4bb96aa1b0c6f805c28e544\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_c405c97bb33dae252200c905827ac5253a712b14\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Agenda\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="46a27bc65860e43cbe753d2a051f0581d3ea4b9a">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_fa1349bcc16946a3a592c21d1af0bf559acfb949\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\747ea8153e315881e0e3cb2496e3634479f3121f\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
         sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
-        <dex dex="D:\Agenda\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_9a96f9fa317b6ec21aa61ecf3ef74a0088604860.jar" />
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_50d4b2064b4686663f3246a9c61ddcc0bdfa5380\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\747ea8153e315881e0e3cb2496e3634479f3121f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d1e6b11d033965d6bad4da06856ba0cabc36ad0d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\8a19bd2d774f0f7e7833111905cf56510cd815fc\output\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_f9b4554d6b9fcc4248faaf548f678e300b0765db\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\f20058268ba1f758e39a967c962452fb28541ae0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d0bbd8a984d58f43732e4243a5deaabea453aed8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Marco\.android\build-cache\9f700f6565eaf1e360c78ef6b9cd5c30a5be3034\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="D:\Agenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_44d9f377ccce823cc055ca91c0501279e8c34a87\classes.dex" />
     </item>
 
 </items>
