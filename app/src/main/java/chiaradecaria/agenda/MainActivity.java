@@ -65,11 +65,6 @@ public class MainActivity extends AppCompatActivity {
         };
         listViewEventi.setAdapter(listaEventi);
     }
-    public void mostraEventi(String data){
-        Intent intent = new Intent(this, ActivityEventi.class);
-        intent.putExtra("data", data);
-        startActivity(intent);
-    }
     public void salva(){
         /*String titolo, luogo, data, oraInizio, oraFine;
         titolo = ((EditText) findViewById(R.id.txtViewTitolo)).getText().toString();
@@ -86,5 +81,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnSalvaOnClick(View view) {
         salva();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
     }
 }

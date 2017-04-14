@@ -72,7 +72,6 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             }
         };
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
         //Controllo se è garantito il permesso della posizione
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
             Toast.makeText(this, "Il permesso per l'utilizzo della posizione non è attivo, impossibile determinare la distanza dal luogo dell'evento!", Toast.LENGTH_SHORT).show();

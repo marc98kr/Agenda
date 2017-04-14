@@ -86,6 +86,7 @@ public class ActivityEventi extends AppCompatActivity {
         //Aggiorno la lista soltanto se è stato aggiunto un evento
         if(requestCode == 1){
             Log.i("ActivityEventi", "Aggiunta terminata");
+            setResult(resultCode);
             if(resultCode == 1){
                 Log.i("ActivityEventi", "Evento aggiunto!");
                 adapterEventi.changeCursor(dbManager.getEventi(this.data));

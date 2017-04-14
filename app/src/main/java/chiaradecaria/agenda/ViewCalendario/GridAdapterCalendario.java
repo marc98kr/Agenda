@@ -68,7 +68,6 @@ public class GridAdapterCalendario extends ArrayAdapter{
         //Se il giorno non appartiene al mese e all'anno visualizzato lo coloro di bianco
         else
             view.setBackgroundColor(Color.parseColor("#ffffff"));
-
         TextView giornoCalendario = (TextView) view.findViewById(R.id.giorno_calendario);
         List<Evento> eventi = dbManager.getEventi();
         TextView segnoEvento = (TextView) view.findViewById(R.id.segna_evento);

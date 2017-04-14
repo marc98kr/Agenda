@@ -36,7 +36,7 @@ public class ActivityAggiungiEvento extends AppCompatActivity {
         else{
             try{
                 //Converto le stringhe degli orari in Date per verificare l'orario
-                SimpleDateFormat formatoOrario = new SimpleDateFormat("hh:mm"); //Formato HH:MM 24 ore
+                SimpleDateFormat formatoOrario = new SimpleDateFormat("HH:mm"); //Formato HH:MM 24 ore
                 formatoOrario.setLenient(false);
                 formatoOrario.parse(oraInizio);
                 formatoOrario.parse(oraFine);
