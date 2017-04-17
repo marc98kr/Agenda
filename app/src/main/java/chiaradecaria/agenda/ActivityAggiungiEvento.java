@@ -1,6 +1,7 @@
 package chiaradecaria.agenda;
 /**
  * @author Chiara De Caria, Michele Scarpelli
+ * Activity che permette la creazione di un nuovo evento e quindi l'aggiunta dei dati all'interno del db locale.
  */
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class ActivityAggiungiEvento extends AppCompatActivity {

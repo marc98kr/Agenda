@@ -9,12 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import java.util.Calendar;
 /**
  * @author Chiara De Caria, Michele Scarpelli
  * Activity che mostra gli eventi di una determinata data, consente l'aggiunta di un nuovo evento e la modifica di un evento selezionato.
@@ -24,7 +21,6 @@ public class ActivityEventi extends AppCompatActivity {
     private CursorAdapter adapterEventi;
     private ListView listViewEventi;
     String data;
-    private View.OnClickListener btnEliminaOnClickListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
