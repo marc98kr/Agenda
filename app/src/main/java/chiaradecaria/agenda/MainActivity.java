@@ -16,6 +16,7 @@ import java.util.Calendar;
 
 /**
  * @author Chiara De Caria, Michele Scarpelli
+ * Activity nella quale viene mostrato il calendario e gli eventi del giorno corrente.
  * */
 public class MainActivity extends AppCompatActivity {
     private DBManager dbManager;

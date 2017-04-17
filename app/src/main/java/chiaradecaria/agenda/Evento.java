@@ -1,6 +1,5 @@
 package chiaradecaria.agenda;
 
-import android.util.Log;
 
 import java.text.DateFormat;
 import java.text.ParseException;

@@ -2,6 +2,7 @@ package chiaradecaria.agenda;
 
 /**
  * @author Chiara De Caria, Michele Scarpelli
+ * Classe che contiene i nomi dei campi della taballa contenente gli eventi
  */
 
 public class DBStrings {

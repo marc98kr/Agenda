@@ -4,7 +4,6 @@ package chiaradecaria.agenda;
  */
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -25,7 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Text;
 import org.xml.sax.InputSource;
 
 import java.io.BufferedReader;
@@ -195,9 +193,8 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             e.printStackTrace();
             return null;
         } finally {
-            if (connection != null) {
+            if (connection != null)
                 connection.disconnect();
-            }
         }
     }
 
