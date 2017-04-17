@@ -46,4 +46,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/txtViewData" />
+
+    <Button
+        android:id="@+id/btnEliminaEvento"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtViewLuogo"
+        android:background="@android:drawable/ic_menu_delete" />
 </RelativeLayout>

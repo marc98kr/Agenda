@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 /**
- * @author Chiara De Caria
+ * @author Chiara De Caria, Michele Scarpelli
  * */
 public class MainActivity extends AppCompatActivity {
     private DBManager dbManager;
@@ -83,8 +83,4 @@ public class MainActivity extends AppCompatActivity {
         salva();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-    }
 }

@@ -9,13 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Calendar;
 /**
- * @author Chiara De Caria
+ * @author Chiara De Caria, Michele Scarpelli
  * Activity che mostra gli eventi di una determinata data, consente l'aggiunta di un nuovo evento e la modifica di un evento selezionato.
  * */
 public class ActivityEventi extends AppCompatActivity {
@@ -23,6 +24,7 @@ public class ActivityEventi extends AppCompatActivity {
     private CursorAdapter adapterEventi;
     private ListView listViewEventi;
     String data;
+    private View.OnClickListener btnEliminaOnClickListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,13 +48,22 @@ public class ActivityEventi extends AppCompatActivity {
                 Log.i("ActivityEventi", "ID Evento " + id);
                 String titolo = cursor.getString(cursor.getColumnIndex(DBStrings.TITOLO_EVENTO));
                 String luogo = cursor.getString(cursor.getColumnIndex(DBStrings.LUOGO));
-                String data = cursor.getString(cursor.getColumnIndex(DBStrings.DATA));
+                final String data = cursor.getString(cursor.getColumnIndex(DBStrings.DATA));
                 String oraInizio = cursor.getString(cursor.getColumnIndex(DBStrings.ORA_INIZIO));
                 String oraFine = cursor.getString(cursor.getColumnIndex(DBStrings.ORA_FINE));
                 ((TextView) view.findViewById(R.id.txtViewTitolo)).setText(titolo);
                 ((TextView) view.findViewById(R.id.txtViewLuogo)).setText(luogo);
                 ((TextView) view.findViewById(R.id.txtViewOraInizio)).setText(oraInizio);
                 ((TextView) view.findViewById(R.id.txtViewOraFine)).setText(oraFine);
+                view.findViewById(R.id.btnEliminaEvento).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int posizione = listViewEventi.getPositionForView(v);
+                        long id = adapterEventi.getItemId(posizione);
+                        if(dbManager.eliminaEvento(id))
+                            adapterEventi.changeCursor(dbManager.getEventi(data));
+                    }
+                });
             }
             @Override
             public long getItemId(int position) {
@@ -86,7 +97,6 @@ public class ActivityEventi extends AppCompatActivity {
         //Aggiorno la lista soltanto se è stato aggiunto un evento
         if(requestCode == 1){
             Log.i("ActivityEventi", "Aggiunta terminata");
-            setResult(resultCode);
             if(resultCode == 1){
                 Log.i("ActivityEventi", "Evento aggiunto!");
                 adapterEventi.changeCursor(dbManager.getEventi(this.data));

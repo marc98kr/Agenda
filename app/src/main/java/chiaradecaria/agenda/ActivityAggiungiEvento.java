@@ -1,5 +1,7 @@
 package chiaradecaria.agenda;
-
+/**
+ * @author Chiara De Caria, Michele Scarpelli
+ */
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;

@@ -1,7 +1,7 @@
 package chiaradecaria.agenda.ViewCalendario;
 
 /**
- *  @author Chiara De Caria
+ *  @author Chiara De Caria, Michele Scarpelli
  */
 import android.content.Context;
 import android.graphics.Color;

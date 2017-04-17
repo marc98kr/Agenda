@@ -1,4 +1,7 @@
 package chiaradecaria.agenda;
+/**
+ * @author Chiara De Caria, Michele Scarpelli
+ */
 
 import android.Manifest;
 import android.content.Context;
@@ -116,7 +119,7 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             Toast.makeText(this, "Uno dei campi risulta vuoto!\nModifiche non salvate", Toast.LENGTH_SHORT).show();
         else {
             db.aggiornaEvento(idEvento, titolo, luogo, data, oraInizio, oraFine);
-            Toast.makeText(this, "Evento salvato!", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "Evento salvato!", Toast.LENGTH_SHORT).show();
         }
     }
     /**Metodo che estrae i dati dal documento xml ricevuto da google*/

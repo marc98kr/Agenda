@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author Chiara De Caria
+ * @author Chiara De Caria, Michele Scarpelli
  */
 
 public class DBManager {

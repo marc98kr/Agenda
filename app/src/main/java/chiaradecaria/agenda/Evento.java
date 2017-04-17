@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * @author Chiara De Caria
+ * @author Chiara De Caria, Michele Scarpelli
  * Classe contentene i dati dell'evento.
  */
 

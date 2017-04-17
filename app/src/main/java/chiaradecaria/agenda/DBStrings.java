@@ -1,7 +1,7 @@
 package chiaradecaria.agenda;
 
 /**
- * @author Chiara De Caria
+ * @author Chiara De Caria, Michele Scarpelli
  */
 
 public class DBStrings {
