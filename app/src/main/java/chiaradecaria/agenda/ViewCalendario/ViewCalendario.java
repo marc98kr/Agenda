@@ -1,7 +1,7 @@
 package chiaradecaria.agenda.ViewCalendario;
 
 /**
- * @author Chiara De Caria, Michele Scarpelli@author Chiara De Caria
+ * @author Chiara De Caria, Michele Scarpelli
  * Calendario personalizzato.
  */
 import android.content.Context;

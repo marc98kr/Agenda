@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class ActivityAggiungiEvento extends AppCompatActivity {
@@ -40,8 +41,12 @@ public class ActivityAggiungiEvento extends AppCompatActivity {
                 //Converto le stringhe degli orari in Date per verificare l'orario
                 SimpleDateFormat formatoOrario = new SimpleDateFormat("HH:mm"); //Formato HH:MM 24 ore
                 formatoOrario.setLenient(false);
-                formatoOrario.parse(oraInizio);
-                formatoOrario.parse(oraFine);
+                Date orarioInizio = formatoOrario.parse(oraInizio);
+                Date orarioFine  = formatoOrario.parse(oraFine);
+                if(orarioFine.before(orarioInizio)){
+                    Toast.makeText(this, "L'orario della fine deve essere successivo all'orario di inizio!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }catch(ParseException ex){
                 //Eccezione lanciata in caso di orario non valido
                 Toast.makeText(this, "Errore inserimento orario!", Toast.LENGTH_SHORT).show();

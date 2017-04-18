@@ -34,6 +34,9 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -116,6 +119,19 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
         if (titolo.isEmpty() || luogo.isEmpty() || data.isEmpty() || oraInizio.isEmpty() || oraFine.isEmpty())
             Toast.makeText(this, "Uno dei campi risulta vuoto!\nModifiche non salvate", Toast.LENGTH_SHORT).show();
         else {
+            try{
+                SimpleDateFormat formatoOrario = new SimpleDateFormat("HH:mm"); //Formato HH:MM 24 ore
+                formatoOrario.setLenient(false);
+                Date orarioInizio = formatoOrario.parse(oraInizio);
+                Date orarioFine  = formatoOrario.parse(oraFine);
+                if(orarioFine.before(orarioInizio)) {
+                    Toast.makeText(this, "L'orario della fine deve essere successivo all'orario di inizio!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }catch(ParseException ex){
+                Toast.makeText(this, "L'orario inserito è errato!", Toast.LENGTH_SHORT).show();
+                return;
+            }
             db.aggiornaEvento(idEvento, titolo, luogo, data, oraInizio, oraFine);
             Toast.makeText(this, "Evento salvato!", Toast.LENGTH_SHORT).show();
         }
