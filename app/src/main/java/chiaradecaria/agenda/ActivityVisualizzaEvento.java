@@ -153,12 +153,18 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
         //La durata inviata dal server di Google Maps è espressa in secondi
         long ore = durataTot / 3600;
         long minuti = (durataTot % 3600) / 60;
-        if (ore == 0)
+        durata = "";
+        if(ore == 0)
             return minuti + " minuti";
-        else if (minuti == 0)
-            return ore + " ore";
+        if(ore == 1)
+            durata = ore + " ora ";
         else
-            return "" + ore + " ore e " + minuti + " minuti";
+            durata = ore + " ore ";
+        if(minuti == 1)
+            durata = durata + " e " + minuti + " minuto";
+        else if(minuti > 1)
+            durata = durata + " e " + minuti + " minuti";
+        return durata;
     }
 
     @Nullable
