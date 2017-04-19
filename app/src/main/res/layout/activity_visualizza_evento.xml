@@ -73,14 +73,14 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
+        android:id="@+id/txtOraInizio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/txtOraInizio"
-        android:inputType="text"
-        android:layout_below="@+id/txtViewOraInizio"
         android:layout_alignLeft="@+id/txtData"
-        android:layout_alignStart="@+id/txtData" />
+        android:layout_alignStart="@+id/txtData"
+        android:layout_below="@+id/txtViewOraInizio"
+        android:ems="10"
+        android:inputType="time" />
 
     <TextView
         android:text="Ora fine"
@@ -93,14 +93,15 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
+        android:id="@+id/txtOraFine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/txtOraFine"
-        android:textSize="18sp"
-        android:layout_below="@+id/txtViewOraFine"
         android:layout_alignLeft="@+id/txtOraInizio"
-        android:layout_alignStart="@+id/txtOraInizio" />
+        android:layout_alignStart="@+id/txtOraInizio"
+        android:layout_below="@+id/txtViewOraFine"
+        android:ems="10"
+        android:inputType="time"
+        android:textSize="18sp" />
 
     <EditText
         android:layout_width="wrap_content"

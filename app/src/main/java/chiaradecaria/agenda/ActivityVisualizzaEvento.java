@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
+import android.icu.text.RelativeDateTimeFormatter;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -36,6 +37,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -46,7 +48,7 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
     DBManager db;
     long idEvento;
     private LocationListener locationListener;
-
+    Date inizioEvento;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +99,8 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             String luogo = cursor.getString(cursor.getColumnIndex(DBStrings.LUOGO));
             String data = cursor.getString(cursor.getColumnIndex(DBStrings.DATA));
             String oraInizio = cursor.getString(cursor.getColumnIndex(DBStrings.ORA_INIZIO));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+            inizioEvento = dateFormat.parse(oraInizio);
             String oraFine = cursor.getString(cursor.getColumnIndex(DBStrings.ORA_FINE));
             ((EditText) findViewById(R.id.txtTitolo)).setText(titolo);
             ((EditText) findViewById(R.id.txtLuogo)).setText(luogo);
@@ -105,7 +109,14 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             ((EditText) findViewById(R.id.txtOraFine)).setText(oraFine);
         } catch (CursorIndexOutOfBoundsException ex) {
             Log.e("A.VisualizzaEvento", ex.getLocalizedMessage());
+        } catch (ParseException e) {
+
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        aggiornaEvento();
     }
 
     /**Metodo che aggiorna i dati dell'evento all'interno del db*/
@@ -132,8 +143,9 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
                 Toast.makeText(this, "L'orario inserito è errato!", Toast.LENGTH_SHORT).show();
                 return;
             }
-            db.aggiornaEvento(idEvento, titolo, luogo, data, oraInizio, oraFine);
+            db.aggiornaEvento(idEvento, titolo, luogo, data, oraFine, oraInizio);
             Toast.makeText(this, "Evento salvato!", Toast.LENGTH_SHORT).show();
+            this.finish();
         }
     }
     /**Metodo che estrae i dati dal documento xml ricevuto da google*/
@@ -165,11 +177,38 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
 
     private String estraiDurata(String durata) {
         durata = durata.substring(1, durata.indexOf("\n", 1)).replaceAll("\\s", "");
+        Log.i("A.VisualizzaEvento", durata);
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         long durataTot = Long.parseLong(durata);
         //La durata inviata dal server di Google Maps è espressa in secondi
         long ore = durataTot / 3600;
         long minuti = (durataTot % 3600) / 60;
-        durata = "";
+        try {
+            Date tempoNecessario = format.parse(ore + ":" + minuti);
+            Date oraCorrente = new Date();
+            Calendar c = Calendar.getInstance();
+            c.setTime(oraCorrente);
+            long tempoResiduo = oraCorrente.getTime() - inizioEvento.getTime();
+            Log.i("A.VisualizzaEvento", "Tempo residuo " + tempoResiduo);
+            if(tempoResiduo >= tempoNecessario.getTime()) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "Sei in tempo per raggiungere il luogo dell'evento", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            else{
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "Sei in ritardo!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        } catch (ParseException e) {
+
+        }
         if(ore == 0)
             return minuti + " minuti";
         if(ore == 1)
@@ -180,6 +219,7 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
             durata = durata + " e " + minuti + " minuto";
         else if(minuti > 1)
             durata = durata + " e " + minuti + " minuti";
+
         return durata;
     }
 
@@ -260,7 +300,6 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ((LocationManager) getSystemService(LOCATION_SERVICE)).removeUpdates(locationListener);
         }
-        aggiornaEvento();
     }
 
     /**Necessario per eseguire operazioni tramite Internet*/

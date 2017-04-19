@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 /**
  * @author Chiara De Caria, Michele Scarpelli
  * Activity che mostra gli eventi di una determinata data, consente l'aggiunta di un nuovo evento e la modifica di un evento selezionato.
@@ -56,8 +58,10 @@ public class ActivityEventi extends AppCompatActivity {
                     public void onClick(View v) {
                         int posizione = listViewEventi.getPositionForView(v);
                         long id = adapterEventi.getItemId(posizione);
-                        if(dbManager.eliminaEvento(id))
+                        if(dbManager.eliminaEvento(id)) {
                             adapterEventi.changeCursor(dbManager.getEventi(data));
+                            Toast.makeText(getApplicationContext(), "Evento eliminato!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }
@@ -80,7 +84,6 @@ public class ActivityEventi extends AppCompatActivity {
         Intent intent = new Intent(ActivityEventi.this, ActivityVisualizzaEvento.class);
         intent.putExtra("id_evento", id);
         startActivity(intent);
-        this.finish();
     }
     public void btnAggiungiEventoOnClick(View view) {
         Intent intent = new Intent(this, ActivityAggiungiEvento.class);

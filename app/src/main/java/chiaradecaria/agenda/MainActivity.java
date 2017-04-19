@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CalendarView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Calendar;
 
 /**
@@ -44,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void bindView(View view, Context context, Cursor cursor) {
+            public void bindView(final View view, Context context, Cursor cursor) {
                 String titolo = cursor.getString(cursor.getColumnIndex(DBStrings.TITOLO_EVENTO));
                 String luogo = cursor.getString(cursor.getColumnIndex(DBStrings.LUOGO));
-                String data = cursor.getString(cursor.getColumnIndex(DBStrings.DATA));
+                final String data = cursor.getString(cursor.getColumnIndex(DBStrings.DATA));
                 String oraInizio = cursor.getString(cursor.getColumnIndex(DBStrings.ORA_INIZIO));
                 String oraFine = cursor.getString(cursor.getColumnIndex(DBStrings.ORA_FINE));
                 Log.i("MainActivity", data);
@@ -55,6 +58,22 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView) view.findViewById(R.id.txtViewLuogo)).setText(luogo);
                 ((TextView) view.findViewById(R.id.txtViewOraInizio)).setText(oraInizio);
                 ((TextView) view.findViewById(R.id.txtViewOraFine)).setText(oraFine);
+                view.findViewById(R.id.btnEliminaEvento).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        view.findViewById(R.id.btnEliminaEvento).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                int posizione = listViewEventi.getPositionForView(v);
+                                long id = listaEventi.getItemId(posizione);
+                                if(dbManager.eliminaEvento(id)) {
+                                    listaEventi.changeCursor(dbManager.getEventi(data));
+                                    Toast.makeText(getApplicationContext(), "Evento eliminato!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                });
             }
 
             @Override
@@ -65,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         listViewEventi.setAdapter(listaEventi);
+        listViewEventi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, ActivityVisualizzaEvento.class);
+                intent.putExtra("id_evento", id);
+                startActivity(intent);
+            }
+        });
     }
     public void salva(){
         /*String titolo, luogo, data, oraInizio, oraFine;
