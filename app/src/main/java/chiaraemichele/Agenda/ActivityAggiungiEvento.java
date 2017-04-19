@@ -1,4 +1,4 @@
-package chiaradecaria.agenda;
+package chiaraemichele.Agenda;
 /**
  * @author Chiara De Caria, Michele Scarpelli
  * Activity che permette la creazione di un nuovo evento e quindi l'aggiunta dei dati all'interno del db locale.

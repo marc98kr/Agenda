@@ -8,13 +8,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="chiaradecaria.agenda.MainActivity">
-    <chiaradecaria.agenda.ViewCalendario.ViewCalendario
+    tools:context="chiaraemichele.Agenda.MainActivity">
+    <chiaraemichele.Agenda.ViewCalendario.ViewCalendario
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="370dp">
 
-    </chiaradecaria.agenda.ViewCalendario.ViewCalendario>
+    </chiaraemichele.Agenda.ViewCalendario.ViewCalendario>
     <TextView
         android:text="Eventi di oggi:"
         android:layout_width="wrap_content"

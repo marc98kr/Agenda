@@ -1,4 +1,4 @@
-package chiaradecaria.agenda;
+package chiaraemichele.Agenda;
 
 /**
  * @author Chiara De Caria, Michele Scarpelli

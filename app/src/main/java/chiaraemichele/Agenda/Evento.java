@@ -1,4 +1,4 @@
-package chiaradecaria.agenda;
+package chiaraemichele.Agenda;
 
 
 import java.text.DateFormat;

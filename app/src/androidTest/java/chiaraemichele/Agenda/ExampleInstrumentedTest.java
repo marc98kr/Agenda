@@ -1,4 +1,4 @@
-package chiaradecaria.agenda;
+package chiaraemichele.Agenda;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

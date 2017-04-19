@@ -1,4 +1,4 @@
-package chiaradecaria.agenda;
+package chiaraemichele.Agenda;
 /**
  * @author Chiara De Caria, Michele Scarpelli
  */
@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
-import android.icu.text.RelativeDateTimeFormatter;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -37,7 +36,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -186,8 +184,6 @@ public class ActivityVisualizzaEvento extends AppCompatActivity implements Locat
         try {
             Date tempoNecessario = format.parse(ore + ":" + minuti);
             Date oraCorrente = new Date();
-            Calendar c = Calendar.getInstance();
-            c.setTime(oraCorrente);
             long tempoResiduo = oraCorrente.getTime() - inizioEvento.getTime();
             Log.i("A.VisualizzaEvento", "Tempo residuo " + tempoResiduo);
             if(tempoResiduo >= tempoNecessario.getTime()) {

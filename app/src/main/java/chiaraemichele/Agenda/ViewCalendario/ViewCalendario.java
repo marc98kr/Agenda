@@ -1,4 +1,4 @@
-package chiaradecaria.agenda.ViewCalendario;
+package chiaraemichele.Agenda.ViewCalendario;
 
 /**
  * @author Chiara De Caria, Michele Scarpelli
@@ -22,8 +22,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import chiaradecaria.agenda.ActivityEventi;
-import chiaradecaria.agenda.R;
+import chiaraemichele.Agenda.ActivityEventi;
+import chiaraemichele.Agenda.R;
 
 public class ViewCalendario extends LinearLayout {
     private ImageView mesePrecedente, meseSuccessivo;

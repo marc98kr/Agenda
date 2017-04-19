@@ -1,4 +1,4 @@
-package chiaradecaria.agenda.ViewCalendario;
+package chiaraemichele.Agenda.ViewCalendario;
 
 /**
  *  @author Chiara De Caria, Michele Scarpelli
@@ -17,9 +17,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import chiaradecaria.agenda.DBManager;
-import chiaradecaria.agenda.Evento;
-import chiaradecaria.agenda.R;
+import chiaraemichele.Agenda.DBManager;
+import chiaraemichele.Agenda.Evento;
+import chiaraemichele.Agenda.R;
 
 public class GridAdapterCalendario extends ArrayAdapter{
     private LayoutInflater inflater;
